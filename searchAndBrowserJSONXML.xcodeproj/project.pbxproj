@@ -1,0 +1,312 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E7C7F2251626DEDD00D7769E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C7F2241626DEDD00D7769E /* Cocoa.framework */; };
+		E7C7F22F1626DEDD00D7769E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7C7F22D1626DEDD00D7769E /* InfoPlist.strings */; };
+		E7C7F2311626DEDD00D7769E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F2301626DEDD00D7769E /* main.m */; };
+		E7C7F2351626DEDD00D7769E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E7C7F2331626DEDD00D7769E /* Credits.rtf */; };
+		E7C7F2381626DEDD00D7769E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F2371626DEDD00D7769E /* AppDelegate.m */; };
+		E7C7F23B1626DEDE00D7769E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7C7F2391626DEDE00D7769E /* MainMenu.xib */; };
+		E7C7F23E1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F23C1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E7C7F2201626DEDD00D7769E /* searchAndBrowserJSONXML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = searchAndBrowserJSONXML.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7C7F2241626DEDD00D7769E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E7C7F2271626DEDD00D7769E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E7C7F2281626DEDD00D7769E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E7C7F2291626DEDD00D7769E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E7C7F22C1626DEDD00D7769E /* searchAndBrowserJSONXML-Info.plist */ = {isa = PBXFileReference; path = "searchAndBrowserJSONXML-Info.plist"; sourceTree = "<group>"; };
+		E7C7F22E1626DEDD00D7769E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E7C7F2301626DEDD00D7769E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E7C7F2321626DEDD00D7769E /* searchAndBrowserJSONXML-Prefix.pch */ = {isa = PBXFileReference; path = "searchAndBrowserJSONXML-Prefix.pch"; sourceTree = "<group>"; };
+		E7C7F2341626DEDD00D7769E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		E7C7F2361626DEDD00D7769E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		E7C7F2371626DEDD00D7769E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E7C7F23A1626DEDE00D7769E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E7C7F23D1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = searchAndBrowserJSONXML.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E7C7F21D1626DEDD00D7769E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C7F2251626DEDD00D7769E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E7C7F2151626DEDC00D7769E = {
+			isa = PBXGroup;
+			children = (
+				E7C7F22A1626DEDD00D7769E /* searchAndBrowserJSONXML */,
+				E7C7F2231626DEDD00D7769E /* Frameworks */,
+				E7C7F2211626DEDD00D7769E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E7C7F2211626DEDD00D7769E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7C7F2201626DEDD00D7769E /* searchAndBrowserJSONXML.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E7C7F2231626DEDD00D7769E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7C7F2241626DEDD00D7769E /* Cocoa.framework */,
+				E7C7F2261626DEDD00D7769E /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7C7F2261626DEDD00D7769E /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7C7F2271626DEDD00D7769E /* AppKit.framework */,
+				E7C7F2281626DEDD00D7769E /* CoreData.framework */,
+				E7C7F2291626DEDD00D7769E /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E7C7F22A1626DEDD00D7769E /* searchAndBrowserJSONXML */ = {
+			isa = PBXGroup;
+			children = (
+				E7C7F2361626DEDD00D7769E /* AppDelegate.h */,
+				E7C7F2371626DEDD00D7769E /* AppDelegate.m */,
+				E7C7F2391626DEDE00D7769E /* MainMenu.xib */,
+				E7C7F23C1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodeld */,
+				E7C7F22B1626DEDD00D7769E /* Supporting Files */,
+			);
+			path = searchAndBrowserJSONXML;
+			sourceTree = "<group>";
+		};
+		E7C7F22B1626DEDD00D7769E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E7C7F22C1626DEDD00D7769E /* searchAndBrowserJSONXML-Info.plist */,
+				E7C7F22D1626DEDD00D7769E /* InfoPlist.strings */,
+				E7C7F2301626DEDD00D7769E /* main.m */,
+				E7C7F2321626DEDD00D7769E /* searchAndBrowserJSONXML-Prefix.pch */,
+				E7C7F2331626DEDD00D7769E /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E7C7F21F1626DEDD00D7769E /* searchAndBrowserJSONXML */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7C7F2411626DEDE00D7769E /* Build configuration list for PBXNativeTarget "searchAndBrowserJSONXML" */;
+			buildPhases = (
+				E7C7F21C1626DEDD00D7769E /* Sources */,
+				E7C7F21D1626DEDD00D7769E /* Frameworks */,
+				E7C7F21E1626DEDD00D7769E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = searchAndBrowserJSONXML;
+			productName = searchAndBrowserJSONXML;
+			productReference = E7C7F2201626DEDD00D7769E /* searchAndBrowserJSONXML.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E7C7F2171626DEDC00D7769E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = E7C7F21A1626DEDC00D7769E /* Build configuration list for PBXProject "searchAndBrowserJSONXML" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E7C7F2151626DEDC00D7769E;
+			productRefGroup = E7C7F2211626DEDD00D7769E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7C7F21F1626DEDD00D7769E /* searchAndBrowserJSONXML */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E7C7F21E1626DEDD00D7769E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C7F22F1626DEDD00D7769E /* InfoPlist.strings in Resources */,
+				E7C7F2351626DEDD00D7769E /* Credits.rtf in Resources */,
+				E7C7F23B1626DEDE00D7769E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E7C7F21C1626DEDD00D7769E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C7F2311626DEDD00D7769E /* main.m in Sources */,
+				E7C7F2381626DEDD00D7769E /* AppDelegate.m in Sources */,
+				E7C7F23E1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E7C7F22D1626DEDD00D7769E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7C7F22E1626DEDD00D7769E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E7C7F2331626DEDD00D7769E /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7C7F2341626DEDD00D7769E /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		E7C7F2391626DEDE00D7769E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7C7F23A1626DEDE00D7769E /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E7C7F23F1626DEDE00D7769E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E7C7F2401626DEDE00D7769E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E7C7F2421626DEDE00D7769E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "searchAndBrowserJSONXML/searchAndBrowserJSONXML-Prefix.pch";
+				INFOPLIST_FILE = "searchAndBrowserJSONXML/searchAndBrowserJSONXML-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E7C7F2431626DEDE00D7769E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "searchAndBrowserJSONXML/searchAndBrowserJSONXML-Prefix.pch";
+				INFOPLIST_FILE = "searchAndBrowserJSONXML/searchAndBrowserJSONXML-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E7C7F21A1626DEDC00D7769E /* Build configuration list for PBXProject "searchAndBrowserJSONXML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7C7F23F1626DEDE00D7769E /* Debug */,
+				E7C7F2401626DEDE00D7769E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7C7F2411626DEDE00D7769E /* Build configuration list for PBXNativeTarget "searchAndBrowserJSONXML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7C7F2421626DEDE00D7769E /* Debug */,
+				E7C7F2431626DEDE00D7769E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E7C7F23C1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E7C7F23D1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodel */,
+			);
+			currentVersion = E7C7F23D1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodel */;
+			path = searchAndBrowserJSONXML.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E7C7F2171626DEDC00D7769E /* Project object */;
+}
