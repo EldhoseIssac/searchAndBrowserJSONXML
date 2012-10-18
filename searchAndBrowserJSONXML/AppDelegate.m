@@ -7,178 +7,379 @@
 //
 
 #import "AppDelegate.h"
+#define  kXMLUrlList @"JsonUrlList"
+#define  kJSONUrlList @"XmlUrlList"
 
 @implementation AppDelegate
+@synthesize txtBoxXmlUrlList = _txtBoxXmlUrlList;
+@synthesize txtBoxJsonList = _txtBoxJsonList;
+@synthesize xmlUrlComboBox = _xmlUrlComboBox;
+@synthesize xmlProgressIndicator = _xmlProgressIndicator;
+@synthesize xmlInputText = _xmlInputText;
+@synthesize xmlOutText = _xmlOutText;
+@synthesize xmlBrowser = _xmlBrowser;
+
+@synthesize jsonUrlComboBox = _jsonUrlComboBox;
+@synthesize jsonProgressIndicator = _jsonProgressIndicator;
+@synthesize jsonInputText = _jsonInputText;
+@synthesize jsonOutText = _jsonOutText;
+@synthesize jsonBrowser = _jsonBrowser;
 
 @synthesize window = _window;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize managedObjectContext = __managedObjectContext;
 
+
+
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    
+    xmlUrlList=[NSMutableArray arrayWithArray: [[NSUserDefaults standardUserDefaults] arrayForKey:kXMLUrlList]];
+    JsonUrlList=[NSMutableArray arrayWithArray: [[NSUserDefaults standardUserDefaults] arrayForKey:kJSONUrlList]];
+    
+    if (!xmlUrlList) {
+        xmlUrlList=[[NSMutableArray alloc] init];
+        [[NSUserDefaults standardUserDefaults] setObject:xmlUrlList forKey:kXMLUrlList];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    [_xmlBrowser setColumnResizingType:NSBrowserUserColumnResizing];
+    _XmlRootNode = nil;
+    if (!JsonUrlList) {
+        JsonUrlList=[[NSMutableArray alloc] init];
+        [[NSUserDefaults standardUserDefaults] setObject:JsonUrlList forKey:kJSONUrlList];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    [_jsonBrowser setColumnResizingType:NSBrowserUserColumnResizing];
+    _JsonRootNode = nil;
+    
+    
+
     // Insert code here to initialize your application
 }
-
-// Returns the directory the application uses to store the Core Data store file. This code uses a directory named "islet.searchAndBrowserJSONXML" in the user's Application Support directory.
-- (NSURL *)applicationFilesDirectory
-{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-    return [appSupportURL URLByAppendingPathComponent:@"islet.searchAndBrowserJSONXML"];
-}
-
-// Creates if necessary and returns the managed object model for the application.
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (__managedObjectModel) {
-        return __managedObjectModel;
-    }
-	
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"searchAndBrowserJSONXML" withExtension:@"momd"];
-    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return __managedObjectModel;
-}
-
-// Returns the persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.)
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (__persistentStoreCoordinator) {
-        return __persistentStoreCoordinator;
-    }
-    
-    NSManagedObjectModel *mom = [self managedObjectModel];
-    if (!mom) {
-        NSLog(@"%@:%@ No model to generate a store from", [self class], NSStringFromSelector(_cmd));
-        return nil;
-    }
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *applicationFilesDirectory = [self applicationFilesDirectory];
-    NSError *error = nil;
-    
-    NSDictionary *properties = [applicationFilesDirectory resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsDirectoryKey] error:&error];
-    
-    if (!properties) {
-        BOOL ok = NO;
-        if ([error code] == NSFileReadNoSuchFileError) {
-            ok = [fileManager createDirectoryAtPath:[applicationFilesDirectory path] withIntermediateDirectories:YES attributes:nil error:&error];
+#pragma Mark URL manager Button clicks
+- (IBAction)saveURLs:(id)sender {
+    NSArray * urlList;
+    urlList=[self.txtBoxXmlUrlList.string componentsSeparatedByString:@"\n\r"];
+    [xmlUrlList removeAllObjects];
+    for (NSString * st in urlList) {
+        if (st) {
+            if (![st isEqualTo:@""]) {
+                [xmlUrlList addObject:st];
+            }
         }
-        if (!ok) {
-            [[NSApplication sharedApplication] presentError:error];
-            return nil;
-        }
-    } else {
-        if (![[properties objectForKey:NSURLIsDirectoryKey] boolValue]) {
-            // Customize and localize this error.
-            NSString *failureDescription = [NSString stringWithFormat:@"Expected a folder to store application data, found a file (%@).", [applicationFilesDirectory path]];
-            
-            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            [dict setValue:failureDescription forKey:NSLocalizedDescriptionKey];
-            error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:101 userInfo:dict];
-            
-            [[NSApplication sharedApplication] presentError:error];
-            return nil;
-        }
-    }
-    
-    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"searchAndBrowserJSONXML.storedata"];
-    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
-        return nil;
-    }
-    __persistentStoreCoordinator = coordinator;
-    
-    return __persistentStoreCoordinator;
-}
-
-// Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) 
-- (NSManagedObjectContext *)managedObjectContext
-{
-    if (__managedObjectContext) {
-        return __managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setValue:@"Failed to initialize the store" forKey:NSLocalizedDescriptionKey];
-        [dict setValue:@"There was an error building up the data file." forKey:NSLocalizedFailureReasonErrorKey];
-        NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-        [[NSApplication sharedApplication] presentError:error];
-        return nil;
-    }
-    __managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [__managedObjectContext setPersistentStoreCoordinator:coordinator];
-
-    return __managedObjectContext;
-}
-
-// Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
-- (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)window
-{
-    return [[self managedObjectContext] undoManager];
-}
-
-// Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
-- (IBAction)saveAction:(id)sender
-{
-    NSError *error = nil;
-    
-    if (![[self managedObjectContext] commitEditing]) {
-        NSLog(@"%@:%@ unable to commit editing before saving", [self class], NSStringFromSelector(_cmd));
-    }
-    
-    if (![[self managedObjectContext] save:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
-    }
-}
-
-- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
-{
-    // Save changes in the application's managed object context before the application terminates.
-    
-    if (!__managedObjectContext) {
-        return NSTerminateNow;
-    }
-    
-    if (![[self managedObjectContext] commitEditing]) {
-        NSLog(@"%@:%@ unable to commit editing to terminate", [self class], NSStringFromSelector(_cmd));
-        return NSTerminateCancel;
-    }
-    
-    if (![[self managedObjectContext] hasChanges]) {
-        return NSTerminateNow;
-    }
-    
-    NSError *error = nil;
-    if (![[self managedObjectContext] save:&error]) {
-
-        // Customize this code block to include application-specific recovery steps.              
-        BOOL result = [sender presentError:error];
-        if (result) {
-            return NSTerminateCancel;
-        }
-
-        NSString *question = NSLocalizedString(@"Could not save changes while quitting. Quit anyway?", @"Quit without saves error question message");
-        NSString *info = NSLocalizedString(@"Quitting now will lose any changes you have made since the last successful save", @"Quit without saves error question info");
-        NSString *quitButton = NSLocalizedString(@"Quit anyway", @"Quit anyway button title");
-        NSString *cancelButton = NSLocalizedString(@"Cancel", @"Cancel button title");
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:question];
-        [alert setInformativeText:info];
-        [alert addButtonWithTitle:quitButton];
-        [alert addButtonWithTitle:cancelButton];
-
-        NSInteger answer = [alert runModal];
         
-        if (answer == NSAlertAlternateReturn) {
-            return NSTerminateCancel;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:xmlUrlList forKey:kXMLUrlList];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    urlList=[self.txtBoxJsonList.string componentsSeparatedByString:@"\n\r"];
+    [JsonUrlList removeAllObjects];
+    for (NSString * st in urlList) {
+        if (st) {
+            if (![st isEqualTo:@""]) {
+                    [JsonUrlList addObject:st];
+            }
         }
     }
-
-    return NSTerminateNow;
+    [[NSUserDefaults standardUserDefaults] setObject:JsonUrlList forKey:kJSONUrlList];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
 }
+
+- (IBAction)loadURLs:(id)sender {
+    self.txtBoxJsonList.string=@"";
+    self.txtBoxXmlUrlList.string=@"";
+    for (NSString * ur in xmlUrlList) {
+        [self.txtBoxXmlUrlList setString:[NSString stringWithFormat:@"%@%@\n\r",self.txtBoxXmlUrlList.string, ur]];
+    }
+    for (NSString * ur in JsonUrlList) {
+        [self.txtBoxJsonList setString:[NSString stringWithFormat:@"%@%@\n\r",self.txtBoxXmlUrlList.string, ur]];
+    }
+    
+}
+
+#pragma Mark Json Button clicks
+- (IBAction)clickedJsonBrowser:(NSBrowser *)sender
+{
+    NSArray * paths=[sender.path componentsSeparatedByString:@"/"] ;
+    NSMutableArray * pth=[[NSMutableArray alloc] init];
+    int i=0;
+    for (i=1; i<[paths count]; i++) {
+        [pth addObject:[paths objectAtIndex:i]];
+    }
+    
+    FSNode *chld=[_JsonRootNode childForThePath:pth];
+    self.jsonOutText.string=[chld decriptionString] ;
+    
+}
+- (IBAction)JsonProcessBtnClicked:(id)sender
+{
+    NSError* error;
+    json = [NSJSONSerialization 
+            JSONObjectWithData:[self.jsonInputText.string dataUsingEncoding:NSStringEncodingConversionAllowLossy]
+            options:0 
+            error:&error];
+    if (error) {
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:[NSString stringWithFormat:@"Error:- %@",error.description]];
+        [alert runModal];
+        
+        //NSLog(@"err : %@",[error description]);
+    }
+    else {
+        
+        [self loadBrowserJsonChildren];
+        [_jsonBrowser loadColumnZero];
+    }
+
+    
+}
+
+- (IBAction)loadJsonUrlBottonClick:(id)sender
+{
+    if (self.jsonUrlComboBox.stringValue) {
+        NSString *url2Search=self.jsonUrlComboBox.stringValue;
+        if (![JsonUrlList containsObject:url2Search]) {
+            [JsonUrlList addObject:url2Search];
+            [[NSUserDefaults standardUserDefaults] setObject:JsonUrlList forKey:kJSONUrlList];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        [self.jsonProgressIndicator startAnimation:@"hello"];
+        NSURL *url = [[NSURL alloc] initWithString:url2Search];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (data) {
+                self.jsonInputText.string = [[NSString alloc] initWithData:data
+                                                                 encoding:NSUTF8StringEncoding];  // note the retain count here.
+                [self.jsonProgressIndicator stopAnimation:@"hello"];
+            } else {
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert setMessageText:[NSString stringWithFormat:@"Error:- %@",error.localizedDescription]];
+                [alert runModal];
+                
+                [self.jsonProgressIndicator stopAnimation:@"hello"];
+            }
+        }
+         ];
+    }
+ 
+}
+
+#pragma Mark
+#pragma JSON Phrasing
+
+
+- (void) loadBrowserJsonChildren
+{
+    _JsonRootNode=nil;
+    _JsonRootNode=[[FSNode alloc] initWithPath:@"/" didContainSub:YES withString:json.description];
+    for (NSString * ky in json.allKeys) {
+        [_JsonRootNode addChildrenWithPath:ky didContainSub:NO withString:[json objectForKey:ky]];
+    }
+
+    
+}
+
+#pragma Mark
+#pragma Xml Phrasing
+
+
+- (void)parseXMLFileAtURL:(NSString *)xmlString
+{
+    
+    
+    xmlFile=xmlString;    
+    xmlArticles = [[NSMutableArray alloc] init];
+    errorParsing=NO;
+    
+    NSError *error;
+    xmlitem=[XMLReader dictionaryForXMLString:xmlFile error:&error];
+    if (error) {
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:[NSString stringWithFormat:@"Error:- %@ \n\r %@",error.localizedDescription,error.localizedRecoverySuggestion]];
+        [alert runModal];
+        
+        //NSLog(@"err : %@",[error description]);
+        errorParsing=YES;
+    }
+    
+    
+    // NSLog(@"%@",[xmlitem description]); 
+    
+}
+
+#pragma Mark
+#pragma button clicks
+
+
+
+- (IBAction)loadXmlUrlBottonClick:(id)sender {
+    
+    if (self.xmlUrlComboBox.stringValue) {
+        NSString *url2Search=self.xmlUrlComboBox.stringValue;
+        if (![xmlUrlList containsObject:url2Search]) {
+            [xmlUrlList addObject:url2Search];
+            [[NSUserDefaults standardUserDefaults] setObject:xmlUrlList forKey:kXMLUrlList];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        [self.xmlProgressIndicator startAnimation:@"hello"];
+        NSURL *url = [[NSURL alloc] initWithString:url2Search];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (data) {
+                self.xmlInputText.string = [[NSString alloc] initWithData:data
+                                                                 encoding:NSUTF8StringEncoding];  // note the retain count here.
+                [self.xmlProgressIndicator stopAnimation:@"hello"];
+            } else {
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert setMessageText:[NSString stringWithFormat:@"Error:- %@",error.localizedDescription]];
+                [alert runModal];
+                
+                [self.xmlProgressIndicator stopAnimation:@"hello"];
+            }
+        }
+         ];
+    }
+    
+}
+
+
+
+- (IBAction)xmlProcessBtnClicked:(id)sender {
+    [self parseXMLFileAtURL:self.xmlInputText.string];
+    
+    if (errorParsing) {
+        
+        //NSLog(@"err : %@",[error description]);
+    }
+    else {
+        
+        [self loadBrowserXmlChildren];
+        [_xmlBrowser loadColumnZero];
+    }
+    
+}
+#pragma Mark
+#pragma mark ComboxDelegate
+// ==========================================================
+// Combo box data source methods
+// ==========================================================
+
+- (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox {
+    if ([aComboBox isEqualTo:_xmlUrlComboBox]) {
+        
+        return [xmlUrlList count];
+        
+    }
+    else 
+    {
+        return [JsonUrlList count];
+    }
+    return 0;
+}
+- (id)comboBox:(NSComboBox *)aComboBox objectValueForItemAtIndex:(NSInteger)loc {
+    if ([aComboBox isEqualTo:_xmlUrlComboBox]) {
+        return [xmlUrlList objectAtIndex:loc];
+    }
+    else {
+        return [JsonUrlList objectAtIndex:loc];
+    }
+    return nil;
+}
+- (NSUInteger)comboBox:(NSComboBox *)aComboBox indexOfItemWithStringValue:(NSString *)string {
+    
+    if ([aComboBox isEqualTo:_xmlUrlComboBox]) {
+        return [xmlUrlList indexOfObject: string];
+    }
+    else {
+        return [JsonUrlList indexOfObject: string];
+    }
+    return 0;
+
+}
+
+- (NSString *) firstGenreMatchingPrefix:(NSString *)prefix {
+    NSString *string = nil;
+    NSString *lowercasePrefix = [prefix lowercaseString];
+    NSEnumerator *stringEnum = [xmlUrlList objectEnumerator];
+    while ((string = [stringEnum nextObject])) {
+        if ([[string lowercaseString] hasPrefix: lowercasePrefix]) return string;
+    }
+    return nil;
+}
+
+- (NSString *)comboBox:(NSComboBox *)aComboBox completedString:(NSString *)inputString {
+    // This method is received after each character typed by the user, because we have checked the "completes" flag for genreComboBox in IB.
+    // Given the inputString the user has typed, see if we can find a genre with the prefix, and return it as the suggested complete string.
+    NSString *candidate = [self firstGenreMatchingPrefix: inputString];
+    return (candidate ? candidate : inputString);
+}
+
+#pragma Mark
+#pragma Browser Delegate
+#pragma mark NSBrowserDelegate
+- (id)rootItemForBrowser:(NSBrowser *)browser {
+    if ([browser isEqualTo:self.jsonBrowser]) {
+        return _JsonRootNode;
+    }
+    else if ([browser isEqualTo:self.xmlBrowser]) {
+          return _XmlRootNode; 
+    }
+    return nil;
+}
+- (NSInteger)browser:(NSBrowser *)browser numberOfChildrenOfItem:(id)item {
+
+    return [[(FSNode *)item children] count];
+}
+- (id)browser:(NSBrowser *)browser child:(NSInteger)index ofItem:(id)item {
+    return [[(FSNode *)item children] objectAtIndex:index];
+}
+- (BOOL)browser:(NSBrowser *)browser isLeafItem:(id)item {
+    return ![(FSNode *)item didContainSub];
+}
+- (id)browser:(NSBrowser *)browser objectValueForItem:(id)item {
+    return [(FSNode *)item displayName];
+}
+
+-(void)browser:(NSBrowser *)sender willDisplayCell:(id)cell atRow:(NSInteger)row column:(NSInteger)column {
+    NSIndexPath *indexPath = [sender indexPathForColumn:column];
+    indexPath = [indexPath indexPathByAddingIndex:row];
+    FSNode *node = [sender itemAtIndexPath:indexPath];
+    [cell setTitle:[node displayName]];
+    [cell setState:[node state]];
+}
+- (IBAction)clickedXmlBrowser:(NSBrowser *)sender {
+    NSArray * paths=[sender.path componentsSeparatedByString:@"/"] ;
+    NSMutableArray * pth=[[NSMutableArray alloc] init];
+    int i=0;
+    for (i=1; i<[paths count]; i++) {
+        [pth addObject:[paths objectAtIndex:i]];
+    }
+    if ([sender isEqualTo:self.jsonBrowser]) {
+        FSNode *chld=[_JsonRootNode childForThePath:pth];
+        self.jsonOutText.string=[chld decriptionString] ;
+    }
+    else if ([sender isEqualTo:self.xmlBrowser]) {
+        FSNode *chld=[_XmlRootNode childForThePath:pth];
+        self.xmlOutText.string=[chld decriptionString] ;
+    }
+    
+}
+- (void) loadBrowserXmlChildren
+{
+    _XmlRootNode=nil;
+    _XmlRootNode=[[FSNode alloc] initWithPath:@"/" didContainSub:YES withString:xmlitem.description];
+    for (NSString * ky in xmlitem.allKeys) {
+        [_XmlRootNode addChildrenWithPath:ky didContainSub:NO withString:[xmlitem objectForKey:ky]];
+    }
+}
+
+
+
 
 @end

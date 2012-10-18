@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E73422BE162C302C0006E61C /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E73422BD162C302C0006E61C /* XMLReader.m */; };
+		E73422C1162C30B80006E61C /* FSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E73422C0162C30B80006E61C /* FSNode.m */; };
 		E7C7F2251626DEDD00D7769E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C7F2241626DEDD00D7769E /* Cocoa.framework */; };
 		E7C7F22F1626DEDD00D7769E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7C7F22D1626DEDD00D7769E /* InfoPlist.strings */; };
 		E7C7F2311626DEDD00D7769E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F2301626DEDD00D7769E /* main.m */; };
@@ -17,17 +19,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E73422BC162C302C0006E61C /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		E73422BD162C302C0006E61C /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		E73422BF162C30B80006E61C /* FSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNode.h; sourceTree = "<group>"; };
+		E73422C0162C30B80006E61C /* FSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNode.m; sourceTree = "<group>"; };
 		E7C7F2201626DEDD00D7769E /* searchAndBrowserJSONXML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = searchAndBrowserJSONXML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C7F2241626DEDD00D7769E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E7C7F2271626DEDD00D7769E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		E7C7F2281626DEDD00D7769E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E7C7F2291626DEDD00D7769E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E7C7F22C1626DEDD00D7769E /* searchAndBrowserJSONXML-Info.plist */ = {isa = PBXFileReference; path = "searchAndBrowserJSONXML-Info.plist"; sourceTree = "<group>"; };
+		E7C7F22C1626DEDD00D7769E /* searchAndBrowserJSONXML-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "searchAndBrowserJSONXML-Info.plist"; sourceTree = "<group>"; };
 		E7C7F22E1626DEDD00D7769E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E7C7F2301626DEDD00D7769E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E7C7F2321626DEDD00D7769E /* searchAndBrowserJSONXML-Prefix.pch */ = {isa = PBXFileReference; path = "searchAndBrowserJSONXML-Prefix.pch"; sourceTree = "<group>"; };
+		E7C7F2321626DEDD00D7769E /* searchAndBrowserJSONXML-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "searchAndBrowserJSONXML-Prefix.pch"; sourceTree = "<group>"; };
 		E7C7F2341626DEDD00D7769E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		E7C7F2361626DEDD00D7769E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		E7C7F2361626DEDD00D7769E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7C7F2371626DEDD00D7769E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E7C7F23A1626DEDE00D7769E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E7C7F23D1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = searchAndBrowserJSONXML.xcdatamodel; sourceTree = "<group>"; };
@@ -45,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E73422BA162C30170006E61C /* XmlFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E73422BC162C302C0006E61C /* XMLReader.h */,
+				E73422BD162C302C0006E61C /* XMLReader.m */,
+			);
+			name = XmlFiles;
+			sourceTree = "<group>";
+		};
 		E7C7F2151626DEDC00D7769E = {
 			isa = PBXGroup;
 			children = (
@@ -84,9 +99,12 @@
 		E7C7F22A1626DEDD00D7769E /* searchAndBrowserJSONXML */ = {
 			isa = PBXGroup;
 			children = (
+				E73422BA162C30170006E61C /* XmlFiles */,
 				E7C7F2361626DEDD00D7769E /* AppDelegate.h */,
 				E7C7F2371626DEDD00D7769E /* AppDelegate.m */,
 				E7C7F2391626DEDE00D7769E /* MainMenu.xib */,
+				E73422BF162C30B80006E61C /* FSNode.h */,
+				E73422C0162C30B80006E61C /* FSNode.m */,
 				E7C7F23C1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodeld */,
 				E7C7F22B1626DEDD00D7769E /* Supporting Files */,
 			);
@@ -171,6 +189,8 @@
 				E7C7F2311626DEDD00D7769E /* main.m in Sources */,
 				E7C7F2381626DEDD00D7769E /* AppDelegate.m in Sources */,
 				E7C7F23E1626DEDE00D7769E /* searchAndBrowserJSONXML.xcdatamodeld in Sources */,
+				E73422BE162C302C0006E61C /* XMLReader.m in Sources */,
+				E73422C1162C30B80006E61C /* FSNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +312,7 @@
 				E7C7F2431626DEDE00D7769E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
