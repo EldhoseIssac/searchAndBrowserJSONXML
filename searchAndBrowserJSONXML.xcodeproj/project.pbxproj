@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E73422BE162C302C0006E61C /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E73422BD162C302C0006E61C /* XMLReader.m */; };
 		E73422C1162C30B80006E61C /* FSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E73422C0162C30B80006E61C /* FSNode.m */; };
+		E7B4790A162FB35700AB909C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B47909162FB35700AB909C /* icon.png */; };
 		E7C7F2251626DEDD00D7769E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C7F2241626DEDD00D7769E /* Cocoa.framework */; };
 		E7C7F22F1626DEDD00D7769E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7C7F22D1626DEDD00D7769E /* InfoPlist.strings */; };
 		E7C7F2311626DEDD00D7769E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F2301626DEDD00D7769E /* main.m */; };
@@ -23,6 +24,7 @@
 		E73422BD162C302C0006E61C /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		E73422BF162C30B80006E61C /* FSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNode.h; sourceTree = "<group>"; };
 		E73422C0162C30B80006E61C /* FSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNode.m; sourceTree = "<group>"; };
+		E7B47909162FB35700AB909C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		E7C7F2201626DEDD00D7769E /* searchAndBrowserJSONXML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = searchAndBrowserJSONXML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C7F2241626DEDD00D7769E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E7C7F2271626DEDD00D7769E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -114,6 +116,7 @@
 		E7C7F22B1626DEDD00D7769E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E7B47909162FB35700AB909C /* icon.png */,
 				E7C7F22C1626DEDD00D7769E /* searchAndBrowserJSONXML-Info.plist */,
 				E7C7F22D1626DEDD00D7769E /* InfoPlist.strings */,
 				E7C7F2301626DEDD00D7769E /* main.m */,
@@ -176,6 +179,7 @@
 				E7C7F22F1626DEDD00D7769E /* InfoPlist.strings in Resources */,
 				E7C7F2351626DEDD00D7769E /* Credits.rtf in Resources */,
 				E7C7F23B1626DEDE00D7769E /* MainMenu.xib in Resources */,
+				E7B4790A162FB35700AB909C /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,18 +54,17 @@
     [_jsonBrowser setColumnResizingType:NSBrowserUserColumnResizing];
     _JsonRootNode = nil;
     
-    
 
     // Insert code here to initialize your application
 }
 #pragma Mark URL manager Button clicks
 - (IBAction)saveURLs:(id)sender {
     NSArray * urlList;
-    urlList=[self.txtBoxXmlUrlList.string componentsSeparatedByString:@"\n\r"];
+    urlList=[self.txtBoxXmlUrlList.string componentsSeparatedByString:@"\n"];
     [xmlUrlList removeAllObjects];
     for (NSString * st in urlList) {
         if (st) {
-            if (![st isEqualTo:@""]) {
+            if (![[st stringByReplacingOccurrencesOfString:@"\r" withString:@""] isEqualTo:@""]) {
                 [xmlUrlList addObject:st];
             }
         }
@@ -74,11 +73,11 @@
     [[NSUserDefaults standardUserDefaults] setObject:xmlUrlList forKey:kXMLUrlList];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    urlList=[self.txtBoxJsonList.string componentsSeparatedByString:@"\n\r"];
+    urlList=[self.txtBoxJsonList.string componentsSeparatedByString:@"\n"];
     [JsonUrlList removeAllObjects];
     for (NSString * st in urlList) {
         if (st) {
-            if (![st isEqualTo:@""]) {
+            if (![[st stringByReplacingOccurrencesOfString:@"\r" withString:@""] isEqualTo:@""]) {
                     [JsonUrlList addObject:st];
             }
         }
@@ -96,7 +95,7 @@
         [self.txtBoxXmlUrlList setString:[NSString stringWithFormat:@"%@%@\n\r",self.txtBoxXmlUrlList.string, ur]];
     }
     for (NSString * ur in JsonUrlList) {
-        [self.txtBoxJsonList setString:[NSString stringWithFormat:@"%@%@\n\r",self.txtBoxXmlUrlList.string, ur]];
+        [self.txtBoxJsonList setString:[NSString stringWithFormat:@"%@%@\n\r",self.txtBoxJsonList.string, ur]];
     }
     
 }
