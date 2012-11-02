@@ -25,15 +25,15 @@
 		E73422BF162C30B80006E61C /* FSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNode.h; sourceTree = "<group>"; };
 		E73422C0162C30B80006E61C /* FSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNode.m; sourceTree = "<group>"; };
 		E7B47909162FB35700AB909C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		E7C7F2201626DEDD00D7769E /* searchAndBrowserJSONXML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = searchAndBrowserJSONXML.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7C7F2201626DEDD00D7769E /* BrowserJSONXML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowserJSONXML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C7F2241626DEDD00D7769E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E7C7F2271626DEDD00D7769E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		E7C7F2281626DEDD00D7769E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E7C7F2291626DEDD00D7769E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E7C7F22C1626DEDD00D7769E /* searchAndBrowserJSONXML-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "searchAndBrowserJSONXML-Info.plist"; sourceTree = "<group>"; };
+		E7C7F22C1626DEDD00D7769E /* BrowserJSONXML-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BrowserJSONXML-Info.plist"; sourceTree = "<group>"; };
 		E7C7F22E1626DEDD00D7769E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E7C7F2301626DEDD00D7769E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E7C7F2321626DEDD00D7769E /* searchAndBrowserJSONXML-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "searchAndBrowserJSONXML-Prefix.pch"; sourceTree = "<group>"; };
+		E7C7F2321626DEDD00D7769E /* BrowserJSONXML-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrowserJSONXML-Prefix.pch"; sourceTree = "<group>"; };
 		E7C7F2341626DEDD00D7769E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		E7C7F2361626DEDD00D7769E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7C7F2371626DEDD00D7769E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		E7C7F2211626DEDD00D7769E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E7C7F2201626DEDD00D7769E /* searchAndBrowserJSONXML.app */,
+				E7C7F2201626DEDD00D7769E /* BrowserJSONXML.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,10 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				E7B47909162FB35700AB909C /* icon.png */,
-				E7C7F22C1626DEDD00D7769E /* searchAndBrowserJSONXML-Info.plist */,
+				E7C7F22C1626DEDD00D7769E /* BrowserJSONXML-Info.plist */,
 				E7C7F22D1626DEDD00D7769E /* InfoPlist.strings */,
 				E7C7F2301626DEDD00D7769E /* main.m */,
-				E7C7F2321626DEDD00D7769E /* searchAndBrowserJSONXML-Prefix.pch */,
+				E7C7F2321626DEDD00D7769E /* BrowserJSONXML-Prefix.pch */,
 				E7C7F2331626DEDD00D7769E /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -129,9 +129,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E7C7F21F1626DEDD00D7769E /* searchAndBrowserJSONXML */ = {
+		E7C7F21F1626DEDD00D7769E /* BrowserJSONXML */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E7C7F2411626DEDE00D7769E /* Build configuration list for PBXNativeTarget "searchAndBrowserJSONXML" */;
+			buildConfigurationList = E7C7F2411626DEDE00D7769E /* Build configuration list for PBXNativeTarget "BrowserJSONXML" */;
 			buildPhases = (
 				E7C7F21C1626DEDD00D7769E /* Sources */,
 				E7C7F21D1626DEDD00D7769E /* Frameworks */,
@@ -141,9 +141,9 @@
 			);
 			dependencies = (
 			);
-			name = searchAndBrowserJSONXML;
+			name = BrowserJSONXML;
 			productName = searchAndBrowserJSONXML;
-			productReference = E7C7F2201626DEDD00D7769E /* searchAndBrowserJSONXML.app */;
+			productReference = E7C7F2201626DEDD00D7769E /* BrowserJSONXML.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -152,9 +152,9 @@
 		E7C7F2171626DEDC00D7769E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
-			buildConfigurationList = E7C7F21A1626DEDC00D7769E /* Build configuration list for PBXProject "searchAndBrowserJSONXML" */;
+			buildConfigurationList = E7C7F21A1626DEDC00D7769E /* Build configuration list for PBXProject "BrowserJSONXML" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -166,7 +166,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E7C7F21F1626DEDD00D7769E /* searchAndBrowserJSONXML */,
+				E7C7F21F1626DEDD00D7769E /* BrowserJSONXML */,
 			);
 		};
 /* End PBXProject section */
@@ -278,10 +278,11 @@
 		E7C7F2421626DEDE00D7769E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "searchAndBrowserJSONXML/searchAndBrowserJSONXML-Prefix.pch";
-				INFOPLIST_FILE = "searchAndBrowserJSONXML/searchAndBrowserJSONXML-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "searchAndBrowserJSONXML/BrowserJSONXML-Prefix.pch";
+				INFOPLIST_FILE = "searchAndBrowserJSONXML/BrowserJSONXML-Info.plist";
+				PRODUCT_NAME = BrowserJSONXML;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -289,10 +290,11 @@
 		E7C7F2431626DEDE00D7769E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "searchAndBrowserJSONXML/searchAndBrowserJSONXML-Prefix.pch";
-				INFOPLIST_FILE = "searchAndBrowserJSONXML/searchAndBrowserJSONXML-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "searchAndBrowserJSONXML/BrowserJSONXML-Prefix.pch";
+				INFOPLIST_FILE = "searchAndBrowserJSONXML/BrowserJSONXML-Info.plist";
+				PRODUCT_NAME = BrowserJSONXML;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -300,7 +302,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E7C7F21A1626DEDC00D7769E /* Build configuration list for PBXProject "searchAndBrowserJSONXML" */ = {
+		E7C7F21A1626DEDC00D7769E /* Build configuration list for PBXProject "BrowserJSONXML" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7C7F23F1626DEDE00D7769E /* Debug */,
@@ -309,7 +311,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E7C7F2411626DEDE00D7769E /* Build configuration list for PBXNativeTarget "searchAndBrowserJSONXML" */ = {
+		E7C7F2411626DEDE00D7769E /* Build configuration list for PBXNativeTarget "BrowserJSONXML" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7C7F2421626DEDE00D7769E /* Debug */,
