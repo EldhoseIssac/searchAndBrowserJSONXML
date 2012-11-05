@@ -176,20 +176,10 @@
 {
     _JsonRootNode=nil;
     _JsonRootNode=[[FSNode alloc] initWithPath:@"/" didContainSub:YES withString:json.description];
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        
     for (NSString * ky in json.allKeys) {
         [_JsonRootNode addChildrenWithPath:ky didContainSub:NO withString:[json objectForKey:ky]];
     }
-    }
-    else if ([json isKindOfClass:[NSArray class]])
-    {
-        int i;
-        NSArray *tmpArr=(NSArray *)json;
-        for (i=0; i<[json count]; i++) {
-            [_JsonRootNode addChildrenWithPath:[NSString stringWithFormat:@"Object_%d",i] didContainSub:NO withString:[json objectForKey:[tmpArr objectAtIndex:i]]];
-        }
-    }
+
     
 }
 
@@ -383,20 +373,9 @@
 {
     _XmlRootNode=nil;
     _XmlRootNode=[[FSNode alloc] initWithPath:@"/" didContainSub:YES withString:xmlitem.description];
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        for (NSString * ky in xmlitem.allKeys) {
-            [_XmlRootNode addChildrenWithPath:ky didContainSub:NO withString:[xmlitem objectForKey:ky]];
-        }
+    for (NSString * ky in xmlitem.allKeys) {
+        [_XmlRootNode addChildrenWithPath:ky didContainSub:NO withString:[xmlitem objectForKey:ky]];
     }
-    else if ([json isKindOfClass:[NSArray class]])
-    {
-        int i;
-        NSArray *tmpArr=(NSArray *)json;
-        for (i=0; i<[json count]; i++) {
-            [_JsonRootNode addChildrenWithPath:[NSString stringWithFormat:@"Object_%d",i] didContainSub:NO withString:[json objectForKey:[tmpArr objectAtIndex:i]]];
-        }
-    }
-
 }
 
 
