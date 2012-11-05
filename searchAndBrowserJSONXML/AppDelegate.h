@@ -49,6 +49,8 @@
 - (IBAction)xmlProcessBtnClicked:(id)sender;
 - (void) loadBrowserXmlChildren;
 - (IBAction)loadXmlUrlBottonClick:(id)sender;
+- (IBAction)btnXMLGeneratorClicked:(NSButton *)sender;
+
 
 #pragma Mark JSON Tab Objects and messages
 
@@ -65,6 +67,8 @@
 - (IBAction)JsonProcessBtnClicked:(id)sender;
 - (void) loadBrowserJsonChildren;
 - (IBAction)loadJsonUrlBottonClick:(id)sender;
+- (IBAction)btnJSONGeneratorClicked:(NSButton *)sender;
+
 #pragma Mark URL List Tab Objects and messages
 
 
