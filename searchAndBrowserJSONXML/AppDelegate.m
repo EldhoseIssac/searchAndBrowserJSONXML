@@ -176,9 +176,21 @@
 {
     _JsonRootNode=nil;
     _JsonRootNode=[[FSNode alloc] initWithPath:@"/" didContainSub:YES withString:json.description];
-    for (NSString * ky in json.allKeys) {
-        [_JsonRootNode addChildrenWithPath:ky didContainSub:NO withString:[json objectForKey:ky]];
+    if ([json isKindOfClass:[NSDictionary class]]) {
+        for (NSString * ky in json.allKeys) {
+            [_JsonRootNode addChildrenWithPath:ky didContainSub:NO withString:[json objectForKey:ky]];
+        }
     }
+    else if ([json isKindOfClass:[NSArray class]])
+    {
+        int i;
+        NSArray *tmpArr=(NSArray *)json;
+        for (i=0; i<[tmpArr count]; i++) {
+            [_JsonRootNode addChildrenWithPath:[NSString stringWithFormat:@"Object_%d",i] didContainSub:NO withString:[tmpArr objectAtIndex:i]];
+        }
+    }
+    
+
 
     
 }
@@ -206,9 +218,15 @@
         //NSLog(@"err : %@",[error description]);
         errorParsing=YES;
     }
+   
+
+    if (xmlitem.count<1) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Not a valid XML"];
+        [alert runModal];
+    }
     
-    
-    // NSLog(@"%@",[xmlitem description]); 
+     
     
 }
 
@@ -250,7 +268,7 @@
 
 
 - (IBAction)xmlProcessBtnClicked:(id)sender {
-    [self parseXMLFileAtURL:self.xmlInputText.string];
+        [self parseXMLFileAtURL:self.xmlInputText.string];
     
     if (errorParsing) {
         
@@ -373,8 +391,18 @@
 {
     _XmlRootNode=nil;
     _XmlRootNode=[[FSNode alloc] initWithPath:@"/" didContainSub:YES withString:xmlitem.description];
-    for (NSString * ky in xmlitem.allKeys) {
-        [_XmlRootNode addChildrenWithPath:ky didContainSub:NO withString:[xmlitem objectForKey:ky]];
+    if ([xmlitem isKindOfClass:[NSDictionary class]]) {
+        for (NSString * ky in xmlitem.allKeys) {
+            [_XmlRootNode addChildrenWithPath:ky didContainSub:NO withString:[xmlitem objectForKey:ky]];
+        }
+    }
+    else if ([xmlitem isKindOfClass:[NSArray class]])
+    {
+        int i;
+        NSArray *tmpArr=(NSArray *)xmlitem;
+        for (i=0; i<[tmpArr count]; i++) {
+            [_XmlRootNode addChildrenWithPath:[NSString stringWithFormat:@"Object_%d",i] didContainSub:NO withString:[tmpArr objectAtIndex:i]];
+        }
     }
 }
 

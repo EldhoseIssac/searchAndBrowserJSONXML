@@ -46,7 +46,8 @@
         NSArray *arr=(NSArray *) decString;
         int i=0;
         for (i=0; i<[arr count]; i++) {
-            [self addChildrenWithPath:[NSString stringWithFormat:@"Object_%d",i]  didContainSub:NO withString:[arr objectAtIndex:i]];
+            [self addChildrenWithPath:[NSString stringWithFormat:@"%@_%d",_path,i]  didContainSub:NO withString:[arr objectAtIndex:i]];
+            
         }
         _didContainSub=YES;
     }
