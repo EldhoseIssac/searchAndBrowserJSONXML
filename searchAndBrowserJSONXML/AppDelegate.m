@@ -323,7 +323,8 @@
 - (NSString *) firstGenreMatchingPrefix:(NSString *)prefix {
     NSString *string = nil;
     NSString *lowercasePrefix = [prefix lowercaseString];
-    NSEnumerator *stringEnum = [xmlUrlList objectEnumerator];
+    NSArray * anArr = [xmlUrlList arrayByAddingObjectsFromArray:JsonUrlList];
+    NSEnumerator *stringEnum   = [anArr objectEnumerator];
     while ((string = [stringEnum nextObject])) {
         if ([[string lowercaseString] hasPrefix: lowercasePrefix]) return string;
     }
@@ -407,6 +408,9 @@
 }
 
 
-
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)application
+{
+    return YES;
+}
 
 @end
